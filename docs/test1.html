@@ -1,0 +1,49 @@
+ウィンドウオブジェクトのIDを取得する
+書式
+　windowObj.getId()
+
+windowObj : ウィンドウオブジェクト
+
+説明
+
+ 　ウィンドウオブジェクトのIDを取得するにはgetId()を使います。このIDはnew Window()で生成する際に指定したIDになります（一番最初に指定するパラメータ）。 
+
+Ajaxライブラリ リファレンス 
+サンプルコード [実行]
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<title>Sample</title>
+<link rel="stylesheet" href="default.css" type="text/css" media="all">
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript" src="effects.js"></script>
+<script type="text/javascript" src="window.js"></script>
+<script type="text/javascript"><!--
+var win;
+window.onload = function(){
+win = new Window("win01", {
+title: "Sample",
+className: "dialog",
+top:50, left:120,
+width:320, height:240,
+zIndex: 100,
+resizable: true,
+draggable:true
+});
+win.setDestroyOnClose();
+win.show();
+}
+function check(){
+$("result").innerHTML = win.getId();
+}
+// --></script>
+</head>
+<body>
+<h1>ウィンドウIDを取得する</h1>
+<form>
+<input type="button" value="IDをチェック" onClick="check()">
+</form>
+<div id="result"></div>
+</body>
+</html>
+ 

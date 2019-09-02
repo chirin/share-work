@@ -5,27 +5,17 @@
 <script type="text/javascript"><!--
 var win;
 function init(){
-win = new Window("win01", {
-title: "Sample",
-className: "dialog",
-top:50, left:120,
-width:320, height:240,
-zIndex: 100,
-resizable: true,
-draggable:true
-});
-win.setDestroyOnClose();
-win.show();
+  win = window.open("about:blank", "win01", "");
 }
 function check(){
-$("result").innerHTML = win.getId();
+  result.innerHTML = win.getId();
 }
 // --></script>
 </head>
 <body onload="init()">
 <h1>ウィンドウIDを取得する</h1>
 <form>
-<input type="button" value="IDをチェック" onClick="check()">
+  <input type="button" value="IDをチェック" onClick="check()">
 </form>
 <div id="result"></div>
 </body>

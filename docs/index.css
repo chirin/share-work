@@ -1,0 +1,35 @@
+a>img.icon {
+  width: 64px;
+  height: 64px;
+}
+
+.right {
+  text-align: right;
+}
+
+body {
+  height: 100%;
+  background: aliceblue;
+}
+
+span {
+  font-size: small;
+}
+
+.view {
+  width: 100%;
+  background-color: ghostwhite;
+}
+
+th {
+  font-size: small;
+}
+
+html {
+  height: 100%;
+}
+
+iframe {
+  width: 100%;
+  height: 13em;
+}

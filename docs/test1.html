@@ -2,13 +2,9 @@
 <head>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <title>Sample</title>
-<link rel="stylesheet" href="default.css" type="text/css" media="all">
-<script type="text/javascript" src="prototype.js"></script>
-<script type="text/javascript" src="effects.js"></script>
-<script type="text/javascript" src="window.js"></script>
 <script type="text/javascript"><!--
 var win;
-window.onload = function(){
+function init(){
 win = new Window("win01", {
 title: "Sample",
 className: "dialog",
@@ -26,7 +22,7 @@ $("result").innerHTML = win.getId();
 }
 // --></script>
 </head>
-<body>
+<body onload="init()">
 <h1>ウィンドウIDを取得する</h1>
 <form>
 <input type="button" value="IDをチェック" onClick="check()">

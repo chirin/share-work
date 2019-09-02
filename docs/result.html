@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RESULT</title>
+  <base target="_blank">
+
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./index.css">
+
+  <script>
+    function apply() {
+      const query = {};
+      location.search.replace("?", "")
+        .split("&")
+        .forEach(function (keyVal) {
+          const tokens = keyVal.split("=");
+          query[decodeURIComponent(tokens[0])] = decodeURIComponent(tokens[1])
+        });
+      const json = JSON.parse(query['json']);
+      result.value = JSON.stringify(json, null, 2);
+    }
+  </script>
+
+</head>
+
+<body onload="apply()">
+  <h3>RESULT</h3>
+  <div>
+    <textarea id="result" class="view" style="height:30em;" readonly></textarea>
+  </div>
+  <script type="text/javascript">
+    // メッセージ受信イベント
+    window.addEventListener('message', function (event) {
+      // メッセージ送信元のサイトに返答する
+      console.dir(event.data)
+      result.value = `${event.origin}:\n${event.data}`
+      console.error('event.source', !!event.source)
+      if (event.source) {
+        event.source.postMessage('RESULT:' + event.data + '+WORLD!', event.origin);
+      }
+    }, false);
+  </script>
+</body>
+
+</html>

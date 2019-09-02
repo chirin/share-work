@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <!--
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  -->
+  <title>SEND</title>
+
+  <script type="text/javascript">
+    // メッセージ受信イベント
+    window.addEventListener('message', function (event) {
+      alert(event.data); // 'HELLO!'+'WORLD!'
+    }, false);
+    function init() {
+      console.log("init");
+      push1.addEventListener('click', (event) => {
+        // 外部サイトにメッセージを投げる
+        const input = target1
+        const target = input.contentWindow;
+        target.postMessage("[SEND]:HELLO!", input.src);
+      }, false);
+      push2.addEventListener('click', (event) => {
+        // 自分サイトにメッセージを投げる
+        const input = target2
+        const target = input.contentWindow;
+        target.postMessage("[SEND]:HELLO!", input.src);
+      }, false);
+    }
+  </script>
+  <!--
+    DOCTYPEを入れたらbodyのheightが0になってしまった - Qiita
+    https://qiita.com/querykuma/items/0511beaec132cbb0bba1
+  -->
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+    }
+    div {
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 30%;
+    }
+  </style>
+</head>
+
+<body onload="init()">
+  <h3>[SEND]</h3>
+  <div>
+    <button id="push1">send(1)</button>
+    <iframe id="target1" src="https://chirin-webhook.glitch.me/client/result.html?json=[]"></iframe>
+    <button id="push2">send(2)</button>
+    <iframe id="target2" src="https://chirin-uipath-static.glitch.me/echo.html"></iframe>
+  </div>
+</body>
+
+</html>
